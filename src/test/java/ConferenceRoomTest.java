@@ -33,5 +33,18 @@ public class ConferenceRoomTest {
         assertEquals(0, conferenceRoom.getGuestCount());
     }
 
+    @Test
+    public void canAddGuest(){
+        conferenceRoom.addGuest(guest1);
+      assertEquals(1, conferenceRoom.getGuestCount());
+    }
+
+    @Test
+    public void canRemoveGuest(){
+      conferenceRoom.addGuest(guest1);
+      conferenceRoom.removeGuest(guest1);
+      assertEquals(0, conferenceRoom.getGuestCount());
+    }
+
 
 }
