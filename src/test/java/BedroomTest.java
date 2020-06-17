@@ -13,7 +13,7 @@ public class BedroomTest {
 
   @Before
   public void before(){
-    bedroom = new Bedroom(101, 3, "double");
+    bedroom = new Bedroom(101, 2, "double");
     guest1 = new Guest("Dave");
     guest2 = new Guest("Sandra");
     guest3 = new Guest("Brian");
@@ -26,7 +26,7 @@ public class BedroomTest {
 
   @Test
   public void canGetCapacity(){
-    assertEquals(3, bedroom.getRoomCapacity());
+    assertEquals(2, bedroom.getRoomCapacity());
   }
 
   @Test
@@ -41,10 +41,19 @@ public class BedroomTest {
 
 
 
-  @Test public void canAddGuestToRoom(){
+  @Test public void canAddGuestToRoom__NotFull(){
     bedroom.addGuest(guest1);
     assertEquals(1, bedroom.guestCount());
   }
+
+  @Test public void canAddGuestToRoom__WhenFull(){
+    bedroom.addGuest(guest1);
+    bedroom.addGuest(guest2);
+    bedroom.addGuest(guest3);
+    assertEquals(2, bedroom.guestCount());
+  }
+
+
 
   @Test public void canRemoveGuestFromRoom(){
     bedroom.addGuest(guest1);
